@@ -8,31 +8,19 @@
 
 import React, { Fragment } from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
   TouchableOpacity,
   Button,
   TextInput,
-  SectionList,
-  FlatList,
   Text,
-  StatusBar,
   Alert
 } from 'react-native';
 
 import {
-  Header,
-  LearnMoreLinks,
   Colors,
-  DebugInstructions,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import { arrayExpression } from '@babel/types';
-// import console = require('console');
-
-
 
 export default class App extends React.PureComponent {
   constructor(props) {
@@ -107,11 +95,11 @@ export default class App extends React.PureComponent {
         />
         <ScrollView style={styles.scrollView}>
           <View >
-            <Text style={styles.sectionHeader}>Will Do</Text>
+            {this.state.willDo.length <= 0 ? null : <Text style={styles.sectionHeader}>WillDo</Text>}
             {this.state.willDo.map(willDo => this.renderWillDo(willDo))}
           </View>
           <View >
-            <Text style={styles.sectionHeader}>Completed</Text>
+            {this.state.completed.length <= 0 ? null : <Text style={styles.sectionHeader}>Completed</Text>}
             {this.state.completed.map(completed => this.renderCompleted(completed))}
           </View>
         </ScrollView>
@@ -145,7 +133,8 @@ const styles = StyleSheet.create({
   completed: {
     marginLeft: 12,
     textDecorationLine: 'line-through',
-    borderRadius: 12
+    borderRadius: 12,
+    textDecorationColor: 'rgba(22, 180, 247,1.0)'
 
   },
   willDo: {
@@ -155,29 +144,6 @@ const styles = StyleSheet.create({
     marginTop: 2,
     paddingLeft: 15,
     backgroundColor: 'rgba(242, 203, 44,1.0)'
-  },
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
   },
 });
 
